@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import homeContentBackGround from "../assets/images/homePage.webp";
 
@@ -12,8 +13,8 @@ export default function Home() {
         </h2>
       </Header>
       <Content>
-        <button>Quero começar</button>
-        <button>Já sou grato</button>
+        <Links to="/register">Quero começar</Links>
+        <Links to="/login">Já sou grato</Links>
       </Content>
     </Body>
   );
@@ -59,22 +60,27 @@ const Content = styled.div`
   justify-content: flex-end;
   align-items: center;
   background-color: #4d65a8;
-  button:first-child {
-    height: 3rem;
-    width: 14rem;
-    color: #fff;
-    background-color: #8c97ea;
-    border-radius: 10px;
-    border: none;
-    font-weight: bold;
-    font-size: 18px;
-  }
-  button:last-child {
+`;
+
+const Links = styled(Link)`
+  height: 3rem;
+  width: 14rem;
+  color: #fff;
+  background-color: #8c97ea;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:last-of-type {
     border: none;
     background-color: none;
     color: #fff;
     background-color: transparent;
-    margin: 1rem 0 2.5rem;
+    margin: 0.5rem 0 1.5rem;
     font-weight: bold;
     font-size: 18px;
   }
