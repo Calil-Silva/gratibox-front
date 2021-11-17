@@ -1,7 +1,11 @@
+import { GlobalStyles } from "./components/GlobalStyles";
+import Home from "./pages/Home";
+
 export default function App() {
   return (
-    <div className="App">
-      <h1>TESTE</h1>
-    </div>
+    <>
+      <GlobalStyles />
+      <Home />
+    </>
   );
 }
