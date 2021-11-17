@@ -33,13 +33,13 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
-      background-color: #6d7ce4;        
+    background-color: #6d7ce4;
+    font-family: 'Roboto', sans-serif;        
 }
     }
     button {
         border: none;
         color: #fff;
-        background-color: none;
     }
         a {
         text-decoration: none;
