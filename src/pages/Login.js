@@ -8,8 +8,8 @@ export default function Login() {
         <h1>Bem vindo ao GratiBox</h1>
       </Header>
       <Form>
-        <input type="text" placeholder="Nome" />
-        <input type="email" placeholder="Email" />
+        <input type="text" placeholder="Email" />
+        <input type="password" placeholder="Senha" />
       </Form>
       <Submit>Login</Submit>
       <Links to="/register">Ainda não sou grato</Links>
