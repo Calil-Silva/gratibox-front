@@ -52,9 +52,11 @@ const Form = styled.div`
     margin-bottom: 0.5rem;
     padding-left: 0.8rem;
     font-size: 24px;
+    font-weight: bold;
 
     ::placeholder {
       font-size: 24px;
+      font-weight: bold;
       color: #60484866;
     }
   }
