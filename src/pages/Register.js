@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { postNewUser } from "../services/gratibox";
 
 export default function Register() {
+  const navigate = useNavigate();
   const [newUserData, setNewUserData] = useState({
     name: "",
     email: "",
@@ -12,7 +14,10 @@ export default function Register() {
 
   const registerNewUser = () => {
     postNewUser(newUserData)
-      .then((res) => alert(res.data.message))
+      .then((res) => {
+        alert(res.data.message);
+        navigate("/login");
+      })
       .catch((err) => alert(err.response.data.message));
   };
 
