@@ -10,18 +10,55 @@ export default function Register() {
     confirmedPassword: "",
   });
 
+  const registerNewUser = () => {
+    postNewUser(newUserData)
+      .then((res) => alert(res.data.message))
+      .catch((err) => alert(err.response.data.message));
+  };
+
   return (
     <Body>
       <Header>
         <h1>Bem vindo ao GratiBox</h1>
       </Header>
       <Form>
-        <input type="text" placeholder="Nome" />
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Senha" />
-        <input type="password" placeholder="Confirmar senha" />
+        <input
+          type="text"
+          placeholder="Nome"
+          value={newUserData.name}
+          onChange={(e) =>
+            setNewUserData({ ...newUserData, name: e.target.value })
+          }
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          value={newUserData.email}
+          onChange={(e) =>
+            setNewUserData({ ...newUserData, email: e.target.value })
+          }
+        />
+        <input
+          type="password"
+          placeholder="Senha"
+          value={newUserData.password}
+          onChange={(e) =>
+            setNewUserData({ ...newUserData, password: e.target.value })
+          }
+        />
+        <input
+          type="password"
+          placeholder="Confirmar senha"
+          value={newUserData.confirmedPassword}
+          onChange={(e) =>
+            setNewUserData({
+              ...newUserData,
+              confirmedPassword: e.target.value,
+            })
+          }
+        />
       </Form>
-      <Submit>Cadastrar</Submit>
+      <Submit onClick={registerNewUser}>Cadastrar</Submit>
     </Body>
   );
 }
