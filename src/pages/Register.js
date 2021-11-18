@@ -1,7 +1,15 @@
+import { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { postNewUser } from "../services/gratibox";
 
 export default function Register() {
+  const [newUserData, setNewUserData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmedPassword: "",
+  });
+
   return (
     <Body>
       <Header>
@@ -13,7 +21,7 @@ export default function Register() {
         <input type="password" placeholder="Senha" />
         <input type="password" placeholder="Confirmar senha" />
       </Form>
-      <Submit to="/entrar">Cadastrar</Submit>
+      <Submit>Cadastrar</Submit>
     </Body>
   );
 }
