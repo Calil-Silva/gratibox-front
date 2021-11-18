@@ -1,0 +1,76 @@
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+export default function Register() {
+  return (
+    <Body>
+      <Header>
+        <h1>Bem vindo ao GratiBox</h1>
+      </Header>
+      <Form>
+        <input type="text" placeholder="Nome" />
+        <input type="email" placeholder="Email" />
+        <input type="password" placeholder="Senha" />
+        <input type="password" placeholder="Confirmar senha" />
+      </Form>
+      <Submit to="/entrar">Cadastrar</Submit>
+    </Body>
+  );
+}
+
+const Body = styled.div`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Header = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 7rem 2rem 1rem;
+  h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+  }
+`;
+
+const Form = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0 0;
+  input {
+    height: 4rem;
+    width: calc(100vw - 4rem);
+    border-radius: 10px;
+    border: 1px solid #604848;
+    margin-bottom: 0.5rem;
+    padding-left: 0.8rem;
+    font-size: 24px;
+
+    ::placeholder {
+      font-size: 24px;
+      color: #60484866;
+    }
+  }
+`;
+
+const Submit = styled.button`
+  height: 3.5rem;
+  width: 14rem;
+  color: #fff;
+  background-color: #8c97ea;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  font-size: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3.5rem;
+`;
