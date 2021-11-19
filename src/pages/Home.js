@@ -1,8 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import styled from "styled-components";
 import homeContentBackGround from "../assets/images/homePage.webp";
+import { getUserData } from "../services/loginPersistence";
 
 export default function Home() {
+  const isLogged = getUserData();
+
+  if (isLogged) {
+    return <Navigate to="/user" replace />;
+  }
+
   return (
     <Body>
       <Header>

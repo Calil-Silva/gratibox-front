@@ -9,3 +9,7 @@ function setConfig(token) {
 export function postNewUser(newUserData) {
   return axios.post(`${URL}/register`, newUserData);
 }
+
+export function postLogin(credentials) {
+  return axios.post(`${URL}/login`, credentials);
+}
