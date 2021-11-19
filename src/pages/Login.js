@@ -1,15 +1,35 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function Login() {
+  const [credentials, setCredentials] = useState({
+    email: "",
+    password: "",
+  });
+
   return (
     <Body>
       <Header>
         <h1>Bem vindo ao GratiBox</h1>
       </Header>
       <Form>
-        <input type="text" placeholder="Email" />
-        <input type="password" placeholder="Senha" />
+        <input
+          type="text"
+          placeholder="Email"
+          value={credentials.email}
+          onChange={(e) =>
+            setCredentials({ ...credentials, email: e.target.value })
+          }
+        />
+        <input
+          type="password"
+          placeholder="Senha"
+          value={credentials.password}
+          onChange={(e) =>
+            setCredentials({ ...credentials, password: e.target.value })
+          }
+        />
       </Form>
       <Submit>Login</Submit>
       <Links to="/register">Ainda não sou grato</Links>
