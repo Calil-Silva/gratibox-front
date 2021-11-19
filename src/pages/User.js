@@ -35,7 +35,6 @@ export default function User() {
 }
 
 const Body = styled.div`
-  height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -66,6 +65,10 @@ const Plan = styled.div`
   width: calc(100vw - 1rem);
   background-color: #e5cdb3;
   border-radius: 25px;
+
+  &:last-child {
+    margin-bottom: 3rem;
+  }
 
   img {
     object-fit: cover;
