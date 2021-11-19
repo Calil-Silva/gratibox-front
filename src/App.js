@@ -5,7 +5,7 @@ import { UserContext } from "./contexts/UserContext";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import UserPage from "./pages/UserPage";
+import User from "./pages/User";
 import { getUserData } from "./services/loginPersistence";
 
 export default function App() {
@@ -19,7 +19,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/user" element={<UserPage />} />
+          <Route path="/user" element={<User />} />
         </Routes>
       </UserContext.Provider>
     </BrowserRouter>

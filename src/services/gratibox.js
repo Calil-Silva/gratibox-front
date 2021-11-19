@@ -13,3 +13,7 @@ export function postNewUser(newUserData) {
 export function postLogin(credentials) {
   return axios.post(`${URL}/login`, credentials);
 }
+
+export function getPlans(token) {
+  return axios.get(`${URL}/user`, setConfig(token));
+}
