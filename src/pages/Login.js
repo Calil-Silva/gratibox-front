@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { postLogin } from "../services/gratibox";
 import { UserContext } from "../contexts/UserContext";
+import { storeUserData } from "../services/loginPersistence";
 
 export default function Login() {
   const [credentials, setCredentials] = useState({
@@ -16,6 +17,7 @@ export default function Login() {
     postLogin(credentials)
       .then((res) => {
         setUserData({ ...userData, ...res.data });
+        storeUserData(res.data);
         navigate("/user");
       })
       .catch((err) => alert(err.response.data.message));
