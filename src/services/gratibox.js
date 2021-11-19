@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const URL = "http://localhost:4000";
+const URL =
+  process.env.NODE_ENV === "dev"
+    ? "http://localhost:4000"
+    : "https://gratibox-webapp.herokuapp.com/";
 
 function setConfig(token) {
   return { headers: { Authorization: `Bearer ${token}` } };
