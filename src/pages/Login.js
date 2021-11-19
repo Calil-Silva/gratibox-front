@@ -1,12 +1,25 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { postLogin } from "../services/gratibox";
+import { UserContext } from "../contexts/UserContext";
 
 export default function Login() {
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
   });
+  const { userData, setUserData } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const handleSubmitLogin = () => {
+    postLogin(credentials)
+      .then((res) => {
+        setUserData({ ...userData, ...res.data });
+        navigate("/user");
+      })
+      .catch((err) => alert(err.response.data.message));
+  };
 
   return (
     <Body>
@@ -31,7 +44,7 @@ export default function Login() {
           }
         />
       </Form>
-      <Submit>Login</Submit>
+      <Submit onClick={handleSubmitLogin}>Login</Submit>
       <Links to="/register">Ainda não sou grato</Links>
     </Body>
   );
