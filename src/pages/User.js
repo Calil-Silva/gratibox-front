@@ -1,13 +1,30 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import styled from "styled-components";
 import week from "../assets/images/weekplan.jpg";
 import month from "../assets/images/monthplan.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../contexts/UserContext";
+import { useContext, useEffect } from "react";
+import { getPlans } from "../services/gratibox";
 
 export default function User() {
+  const { userData } = useContext(UserContext);
+  const name = userData.name.split(" ")[0];
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    getPlans(userData.token)
+      .then(() => navigate("/newplan", { replace: true }))
+      .catch((err) => {
+        alert(err.response.data.message);
+        navigate("/login", { replace: true });
+      });
+  }, []);
+
   return (
     <Body>
       <Header>
-        <h1>Bom te ver por aqui, @User.</h1>
+        <h1>Bom te ver por aqui, {name}.</h1>
         <h2>Você ainda não assinou um plano, que tal começar agora?</h2>
       </Header>
       <Plan>
@@ -17,7 +34,7 @@ export default function User() {
             Você recebe um box por semana. Ideal para quem quer exercer a
             gratidão todos os dias.
           </h3>
-          <Links to="/plans">Assinar</Links>
+          <Submit to="/plans">Assinar</Submit>
         </div>
       </Plan>
       <Plan>
@@ -27,7 +44,7 @@ export default function User() {
             Você recebe um box por semana. Ideal para quem quer exercer a
             gratidão todos os dias.
           </h3>
-          <Links to="/planss">Assinar</Links>
+          <Submit to="/planss">Assinar</Submit>
         </div>
       </Plan>
     </Body>
@@ -95,7 +112,7 @@ const Plan = styled.div`
   }
 `;
 
-const Links = styled(Link)`
+const Submit = styled(Link)`
   height: 2.5rem;
   width: 10rem;
   color: #fff;
