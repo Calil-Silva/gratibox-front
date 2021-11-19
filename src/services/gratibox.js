@@ -15,5 +15,5 @@ export function postLogin(credentials) {
 }
 
 export function getPlans(token) {
-  return axios.post(`${URL}/plans`, setConfig(token));
+  return axios.get(`${URL}/user`, setConfig(token));
 }

@@ -9,12 +9,24 @@ import { getPlans } from "../services/gratibox";
 
 export default function User() {
   const { userData } = useContext(UserContext);
-  const name = userData.name.split(" ")[0];
+  const name = userData?.name?.split(" ")[0];
   const navigate = useNavigate();
+  const token = userData?.token;
 
   useEffect(() => {
-    getPlans(userData.token)
-      .then(() => navigate("/newplan", { replace: true }))
+    if (!token) {
+      alert("Você precisa estar logado para visualizar esta página");
+      navigate("/login", { replace: true });
+      return;
+    }
+
+    getPlans(token)
+      .then((res) => {
+        if (res.status === 205) {
+          alert("Erro de autenticação");
+          navigate("/login", { replace: true });
+        }
+      })
       .catch((err) => {
         alert(err.response.data.message);
         navigate("/login", { replace: true });
