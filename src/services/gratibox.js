@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const URL = "https://gratibox-webapp.herokuapp.com";
+const URL = process.env.REACT_APP_API_URL;
+
+// "https://gratibox-webapp.herokuapp.com";
 
 function setConfig(token) {
   return { headers: { Authorization: `Bearer ${token}` } };
