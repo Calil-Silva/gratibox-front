@@ -12,7 +12,7 @@ import { getUserData } from "./services/loginPersistence";
 export default function App() {
   const [userData, setUserData] = useState(getUserData());
   const [choosedPlan, setChoosedPlan] = useState({
-    plan: "",
+    plan: "Mensal",
     deliveryDate: "",
     products: [],
   });

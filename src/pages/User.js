@@ -8,7 +8,7 @@ import { useContext, useEffect } from "react";
 import { getPlans } from "../services/gratibox";
 
 export default function User() {
-  const { userData } = useContext(UserContext);
+  const { userData, setChoosedPlan, choosedPlan } = useContext(UserContext);
   const name = userData?.name?.split(" ")[0];
   const navigate = useNavigate();
   const token = userData?.token;
@@ -33,6 +33,13 @@ export default function User() {
       });
   }, []);
 
+  const handlePlan = (e) => {
+    e.preventDefault();
+    const handlePlan = e.target.id;
+    setChoosedPlan({ ...choosedPlan, plan: handlePlan });
+    navigate("/newplan", { replace: true });
+  };
+
   return (
     <Body>
       <Header>
@@ -46,7 +53,9 @@ export default function User() {
             Você recebe um box por semana. Ideal para quem quer exercer a
             gratidão todos os dias.
           </h3>
-          <Submit to="/newplan">Assinar</Submit>
+          <Submit id="Mensal" onClick={(e) => handlePlan(e)}>
+            Assinar
+          </Submit>
         </div>
       </Plan>
       <Plan>
@@ -56,7 +65,9 @@ export default function User() {
             Você recebe um box por semana. Ideal para quem quer exercer a
             gratidão todos os dias.
           </h3>
-          <Submit to="/newplan">Assinar</Submit>
+          <Submit id="Semanal" onClick={(e) => handlePlan(e)}>
+            Assinar
+          </Submit>
         </div>
       </Plan>
     </Body>
@@ -124,7 +135,7 @@ const Plan = styled.div`
   }
 `;
 
-const Submit = styled(Link)`
+const Submit = styled.button`
   height: 2.5rem;
   width: 10rem;
   color: #fff;

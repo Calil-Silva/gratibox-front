@@ -1,20 +1,22 @@
 import styled from "styled-components";
 import plan from "../assets/images/plan.jpeg";
 import Options from "../components/Options";
-// import { UserContext } from "../contexts/UserContext";
-// import { useContext, useState } from "react";
+import { UserContext } from "../contexts/UserContext";
+import { useContext, useState } from "react";
 import eachDayOfInterval from "date-fns/eachDayOfInterval";
 import addDays from "date-fns/addDays";
 
 export default function NewPlan() {
-  //   const { choosedPlan, setChoosedPlan } = useContext(UserContext);
+  const { choosedPlan, setChoosedPlan } = useContext(UserContext);
   const userOptions = {
     plans: ["Semanal", "Mensal"],
-    deliveryMonthly: [1, 10, 20],
-    deliveryWeekly: ["segunda", "quarta", "sexta"],
+    delivery:
+      choosedPlan.plan === "Mensal"
+        ? ["Dia 1", "Dia 10", "Dia 20"]
+        : ["segunda", "quarta", "sexta"],
     products: ["Chás", "Incensos", "Produtos orgânicos"],
   };
-  const labels = ["Plano", "Entrega", "Entrega", "Quero receber"];
+  const labels = ["Plano", "Entrega", "Quero receber"];
 
   const days = eachDayOfInterval(
     {
@@ -23,7 +25,6 @@ export default function NewPlan() {
     },
     { step: 7 }
   );
-  console.log(days);
 
   return (
     <Body>
