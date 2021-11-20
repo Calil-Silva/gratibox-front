@@ -2,7 +2,7 @@
 import styled from "styled-components";
 import week from "../assets/images/weekplan.jpg";
 import month from "../assets/images/monthplan.jpg";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import { useContext, useEffect } from "react";
 import { getPlans } from "../services/gratibox";

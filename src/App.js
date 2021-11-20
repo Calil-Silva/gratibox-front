@@ -15,6 +15,12 @@ export default function App() {
     plan: "Mensal",
     deliveryDate: "",
     products: [],
+    adress: {
+      street: "",
+      zipCode: "",
+      city: "",
+      state: "",
+    },
   });
 
   return (
