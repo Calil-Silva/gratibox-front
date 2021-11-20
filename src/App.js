@@ -11,11 +11,18 @@ import { getUserData } from "./services/loginPersistence";
 
 export default function App() {
   const [userData, setUserData] = useState(getUserData());
+  const [choosedPlan, setChoosedPlan] = useState({
+    plan: "",
+    deliveryDate: "",
+    products: [],
+  });
 
   return (
     <BrowserRouter>
       <GlobalStyles />
-      <UserContext.Provider value={{ userData, setUserData }}>
+      <UserContext.Provider
+        value={{ userData, setUserData, choosedPlan, setChoosedPlan }}
+      >
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />

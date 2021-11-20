@@ -46,7 +46,7 @@ export default function User() {
             Você recebe um box por semana. Ideal para quem quer exercer a
             gratidão todos os dias.
           </h3>
-          <Submit to="/plans">Assinar</Submit>
+          <Submit to="/newplan">Assinar</Submit>
         </div>
       </Plan>
       <Plan>
@@ -56,7 +56,7 @@ export default function User() {
             Você recebe um box por semana. Ideal para quem quer exercer a
             gratidão todos os dias.
           </h3>
-          <Submit to="/planss">Assinar</Submit>
+          <Submit to="/newplan">Assinar</Submit>
         </div>
       </Plan>
     </Body>

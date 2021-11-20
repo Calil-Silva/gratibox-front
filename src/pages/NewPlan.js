@@ -1,10 +1,29 @@
 import styled from "styled-components";
 import plan from "../assets/images/plan.jpeg";
-import { useState } from "react";
 import Options from "../components/Options";
+// import { UserContext } from "../contexts/UserContext";
+// import { useContext, useState } from "react";
+import eachDayOfInterval from "date-fns/eachDayOfInterval";
+import addDays from "date-fns/addDays";
 
 export default function NewPlan() {
-  const [showContent, setShowContent] = useState(false);
+  //   const { choosedPlan, setChoosedPlan } = useContext(UserContext);
+  const userOptions = {
+    plans: ["Semanal", "Mensal"],
+    deliveryMonthly: [1, 10, 20],
+    deliveryWeekly: ["segunda", "quarta", "sexta"],
+    products: ["Chás", "Incensos", "Produtos orgânicos"],
+  };
+  const labels = ["Plano", "Entrega", "Entrega", "Quero receber"];
+
+  const days = eachDayOfInterval(
+    {
+      start: new Date(),
+      end: addDays(new Date(), 10),
+    },
+    { step: 7 }
+  );
+  console.log(days);
 
   return (
     <Body>
@@ -15,7 +34,9 @@ export default function NewPlan() {
       <Plan>
         <img src={plan} alt="New plan" />
         <Form>
-          <Options showContent={showContent} setShowContent={setShowContent} />
+          {Object.keys(userOptions).map((k, i) => (
+            <Options key={i} userOptions={userOptions[k]} labels={labels[i]} />
+          ))}
         </Form>
       </Plan>
     </Body>

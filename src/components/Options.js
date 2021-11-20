@@ -1,27 +1,26 @@
 import styled, { keyframes } from "styled-components/macro";
 import { FiArrowDown, FiArrowUp } from "react-icons/fi";
-import { flipInX, fadeIn, fadeOut } from "react-animations";
+import { flipInX, fadeIn } from "react-animations";
+import { useState } from "react";
 
-export default function Options({ setShowContent, showContent }) {
+export default function Options({ userOptions, labels }) {
+  const [showContent, setShowContent] = useState(false);
+
   return (
     <Body showcontent={showContent}>
       <span onClick={() => setShowContent(!showContent)}>
-        <span>Plano</span>
+        <span>{labels}</span>
         {showContent ? <ArrowUp /> : <ArrowDown />}
       </span>
       <form>
-        <span>
-          <input type="checkbox" id="chas" className="check" />
-          <label htmlFor="chas">Chás</label>
-        </span>
-        <span>
-          <input type="checkbox" id="incensos" />
-          <label htmlFor="incensos">Incensos</label>
-        </span>
-        <span>
-          <input type="checkbox" id="organicos" className="dense" />
-          <label htmlFor="organicos">Produtos orgânicos</label>
-        </span>
+        {userOptions.map((_, i) => {
+          return (
+            <span key={i}>
+              <input type="checkbox" id={userOptions[i]} />
+              <label htmlFor={userOptions[i]}>{userOptions[i]}</label>
+            </span>
+          );
+        })}
       </form>
     </Body>
   );
