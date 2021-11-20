@@ -2,15 +2,17 @@ import styled, { keyframes } from "styled-components";
 import plan from "../assets/images/plan.jpeg";
 import Options from "../components/Options";
 import { UserContext } from "../contexts/UserContext";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { fadeInUp } from "react-animations";
-// import eachDayOfInterval from "date-fns/eachDayOfInterval";
-// import addDays from "date-fns/addDays";
+import { useNavigate } from "react-router";
+import { getNewPlan, postUserPlan } from "../services/gratibox";
 
 export default function NewPlan() {
   const { choosedPlan, setChoosedPlan, userData } = useContext(UserContext);
   const name = userData?.name?.split(" ")[0];
   const [userAdress, setUserAdress] = useState(false);
+  const token = userData?.token;
+  const navigate = useNavigate();
   const userOptions = {
     plans: ["Semanal", "Mensal"],
     delivery:
@@ -21,13 +23,31 @@ export default function NewPlan() {
   };
   const labels = ["Plano", "Entrega", "Quero receber"];
 
-  //   const days = eachDayOfInterval(
-  //     {
-  //       start: new Date(),
-  //       end: addDays(new Date(), 10),
-  //     },
-  //     { step: 7 }
-  //   );
+  useEffect(() => {
+    if (!token) {
+      alert("Você precisa estar logado para visualizar esta página");
+      navigate("/login", { replace: true });
+      return;
+    }
+
+    getNewPlan(token)
+      .then((res) => {
+        if (res.status === 205) {
+          alert("Erro de autenticação");
+          navigate("/login", { replace: true });
+        }
+      })
+      .catch((err) => {
+        alert(err.response.data.message);
+        navigate("/login", { replace: true });
+      });
+  }, [navigate, token]);
+
+  const handleSubmit = () => {
+    postUserPlan(choosedPlan, token)
+      .then(() => alert("Sucesso"))
+      .catch(() => alert("Erro"));
+  };
 
   return (
     <Body>
@@ -103,7 +123,9 @@ export default function NewPlan() {
       >
         Próximo
       </GotoAdress>
-      <Submit userAdress={userAdress}>Finalizar</Submit>
+      <Submit userAdress={userAdress} onClick={handleSubmit}>
+        Finalizar
+      </Submit>
       <BacktoPlans
         onClick={() => setUserAdress(!userAdress)}
         userAdress={userAdress}

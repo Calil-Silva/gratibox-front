@@ -19,3 +19,11 @@ export function postLogin(credentials) {
 export function getPlans(token) {
   return axios.get(`${URL}/user`, setConfig(token));
 }
+
+export function getNewPlan(token) {
+  return axios.get(`${URL}/newplan`, setConfig(token));
+}
+
+export function postUserPlan(plan, token) {
+  return axios.post(`${URL}/newplan`, plan, setConfig(token));
+}
