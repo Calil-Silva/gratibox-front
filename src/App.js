@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import NewPlan from "./pages/NewPlan";
 import Register from "./pages/Register";
 import User from "./pages/User";
+import UserPlan from "./pages/UserPlan";
 import { getUserData } from "./services/loginPersistence";
 
 export default function App() {
@@ -35,6 +36,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/user" element={<User />} />
           <Route path="/newplan" element={<NewPlan />} />
+          <Route path="/userplan" element={<UserPlan />} />
         </Routes>
       </UserContext.Provider>
     </BrowserRouter>
