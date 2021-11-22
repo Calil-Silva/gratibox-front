@@ -5,9 +5,10 @@ import { useContext, useEffect } from "react";
 import { getPlans } from "../services/gratibox";
 import ChooseNewPlan from "../components/ChooseNewPlan";
 import UserPlan from "../components/UserPlan";
+import { storeUserData } from "../services/loginPersistence";
 
 export default function User() {
-  const { userData } = useContext(UserContext);
+  const { userData, setUserData } = useContext(UserContext);
   const navigate = useNavigate();
   const token = userData?.token;
   const hasSubscription = userData?.subscription;
@@ -24,6 +25,11 @@ export default function User() {
         if (res.status === 205) {
           alert("Erro de autenticação");
           navigate("/login", { replace: true });
+          return;
+        }
+        if (res.status === 200) {
+          setUserData({ ...userData, subscription: res.data });
+          storeUserData(userData);
         }
       })
       .catch((err) => {
