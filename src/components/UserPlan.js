@@ -1,6 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import plan from "../assets/images/plan.jpeg";
 import { fadeInUp } from "react-animations";
+import { Link } from "react-router-dom";
 
 export default function UserPlan() {
   return (
@@ -27,7 +28,7 @@ export default function UserPlan() {
           </div>
         </Data>
       </Plan>
-      <Submit>Avaliar entregas</Submit>
+      <Submit to="/userplan/hating">Avaliar entregas</Submit>
     </Body>
   );
 }
@@ -100,7 +101,7 @@ const Data = styled.div`
   }
 `;
 
-const Submit = styled.button`
+const Submit = styled(Link)`
   height: 3.5rem;
   width: 14rem;
   color: #fff;

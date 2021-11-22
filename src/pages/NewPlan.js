@@ -17,7 +17,7 @@ export default function NewPlan() {
     plans: ["Semanal", "Mensal"],
     delivery:
       choosedPlan.plan === "Mensal"
-        ? ["1", "10", "20"]
+        ? ["Dia 1", "Dia 10", "Dia 20"]
         : ["Segunda", "Quarta", "Sexta"],
     products: ["Chás", "Incensos", "Produtos orgânicos"],
   };
