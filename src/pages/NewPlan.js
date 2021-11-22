@@ -17,8 +17,8 @@ export default function NewPlan() {
     plans: ["Semanal", "Mensal"],
     delivery:
       choosedPlan.plan === "Mensal"
-        ? ["Dia 1", "Dia 10", "Dia 20"]
-        : ["segunda", "quarta", "sexta"],
+        ? ["1", "10", "20"]
+        : ["Segunda", "Quarta", "Sexta"],
     products: ["Chás", "Incensos", "Produtos orgânicos"],
   };
   const labels = ["Plano", "Entrega", "Quero receber"];
@@ -38,15 +38,18 @@ export default function NewPlan() {
         }
       })
       .catch((err) => {
-        alert(err.response.data.message);
+        alert("Erro desconhecido");
         navigate("/login", { replace: true });
       });
   }, [navigate, token]);
 
   const handleSubmit = () => {
     postUserPlan(choosedPlan, token)
-      .then(() => alert("Sucesso"))
-      .catch(() => alert("Erro"));
+      .then(() => {
+        alert("Sucesso");
+        navigate("/user", { replace: true });
+      })
+      .catch((err) => alert(err.response.data.message));
   };
 
   return (
@@ -82,11 +85,11 @@ export default function NewPlan() {
             <InputAdress
               placeholder="CEP"
               type="text"
-              value={choosedPlan.adress.cep}
+              value={choosedPlan.adress.zipCode}
               onChange={(e) =>
                 setChoosedPlan({
                   ...choosedPlan,
-                  adress: { ...choosedPlan.adress, cep: e.target.value },
+                  adress: { ...choosedPlan.adress, zipCode: e.target.value },
                 })
               }
             />

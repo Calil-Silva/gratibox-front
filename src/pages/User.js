@@ -35,8 +35,8 @@ export default function User() {
 
   const handlePlan = (e) => {
     e.preventDefault();
-    const handlePlan = e.target.id;
-    setChoosedPlan({ ...choosedPlan, plan: handlePlan });
+    const thisPlan = e.target.id;
+    setChoosedPlan({ ...choosedPlan, plan: thisPlan });
     navigate("/newplan", { replace: true });
   };
 
