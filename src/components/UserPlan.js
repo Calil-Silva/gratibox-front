@@ -1,30 +1,40 @@
 import styled, { keyframes } from "styled-components";
-import plan from "../assets/images/plan.jpeg";
+import img from "../assets/images/plan.jpeg";
 import { fadeInUp } from "react-animations";
 import { Link } from "react-router-dom";
+import { UserContext } from "../contexts/UserContext";
+import { useContext } from "react";
 
 export default function UserPlan() {
+  const { userData } = useContext(UserContext);
+  const name = userData?.name?.split(" ")[0];
+
+  const { subPlan, nextDeliveries, products, subDate } = userData.subscription;
+
+  const localeDate = new Date(subDate).toLocaleDateString("pt-br");
+
   return (
     <Body>
       <Header>
-        <h1>Bom te ver por aqui, @user.</h1>
+        <h1>Bom te ver por aqui, {name}</h1>
         <h2>"Agradecer é a arte de atrair coisas boas"</h2>
       </Header>
       <Plan>
-        <img src={plan} alt="User Plan" />
+        <img src={img} alt="User Plan" />
         <Data>
-          <p>Plano: @tipo_de_plano</p>
-          <p>Data da assinatura: dd/mm/aa</p>
+          <p>Plano: {subPlan}</p>
+          <p>Data da assinatura: {localeDate}</p>
           <p>Próximas entregas:</p>
           <div>
-            <span>dd/mm/aaa</span>
-            <span>dd/mm/aaa</span>
-            <span>dd/mm/aaa</span>
+            {nextDeliveries.map((d) => (
+              <span>{d}</span>
+            ))}
           </div>
+          <span>Produtos:</span>
           <div>
-            <p>Chás</p>
-            <p>Produtos orgânicos</p>
-            <p>Incensos</p>
+            {products.map((p) => (
+              <p>{p}</p>
+            ))}
           </div>
         </Data>
       </Plan>
@@ -36,7 +46,7 @@ export default function UserPlan() {
 const fadeInAnimation = keyframes`${fadeInUp}`;
 
 const Body = styled.div`
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,7 +56,7 @@ const Header = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 5rem 1rem 1rem;
+  margin: 4rem 1rem 1rem;
   h1 {
     font-size: 26px;
     font-weight: bold;
@@ -91,12 +101,17 @@ const Data = styled.div`
     &:last-child {
       flex-direction: initial;
       justify-content: space-between;
-      margin-top: 2rem;
+      margin-top: 0.5rem;
       font-weight: initial;
+      color: #e63c80;
     }
 
     span {
       margin-left: 2.5rem;
+
+      &:last-of-type {
+        margin-bottom: 0.5rem;
+      }
     }
   }
 `;
@@ -113,5 +128,5 @@ const Submit = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1.5rem;
+  margin: 1.5rem 0;
 `;
