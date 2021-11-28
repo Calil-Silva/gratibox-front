@@ -14,7 +14,7 @@ import {
 } from "../styles/SharedStyles";
 
 export default function Login() {
-  const VERTICAL = "3rem";
+  const VERTICAL = "2rem";
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -38,6 +38,7 @@ export default function Login() {
       <Header>
         <h1>Bem vindo ao GratiBox</h1>
       </Header>
+      <Marginer vertical={VERTICAL} />
       <Form>
         <Input
           type="text"

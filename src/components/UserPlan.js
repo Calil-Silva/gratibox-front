@@ -1,19 +1,29 @@
 import styled, { keyframes } from "styled-components";
 import img from "../assets/images/plan.jpeg";
 import { fadeInUp } from "react-animations";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import { useContext } from "react";
 import { colors } from "../styles/theme";
-import { Header, SubmitStyle, Body } from "../styles/SharedStyles";
+import { Header, SubmitStyle, Body, Marginer } from "../styles/SharedStyles";
+import { signoutUser } from "../services/gratibox";
+import { removeUserData } from "../services/loginPersistence";
 
 export default function UserPlan() {
   const { userData } = useContext(UserContext);
   const name = userData?.name?.split(" ")[0];
+  const navigate = useNavigate();
 
   const { subPlan, nextDeliveries, products, subDate } = userData.subscription;
 
   const localeDate = new Date(subDate).toLocaleDateString("pt-br");
+
+  const signout = () => {
+    signoutUser(userData.token).then(() => {
+      removeUserData();
+      navigate("/");
+    });
+  };
 
   return (
     <Body>
@@ -28,19 +38,21 @@ export default function UserPlan() {
           <p>Data da assinatura: {localeDate}</p>
           <p>Próximas entregas:</p>
           <div>
-            {nextDeliveries.map((d) => (
-              <span>{d}</span>
+            {nextDeliveries.map((d, i) => (
+              <span key={i}>{d}</span>
             ))}
           </div>
           <span>Produtos:</span>
           <div>
-            {products.map((p) => (
-              <p>{p}</p>
+            {products.map((p, i) => (
+              <p key={i}>{p}</p>
             ))}
           </div>
         </Data>
       </Plan>
+      <Marginer vertical="0.5rem" />
       <Submit to="/userplan/hating">Avaliar entregas</Submit>
+      <Sigout onClick={signout}>Sair</Sigout>
     </Body>
   );
 }
@@ -95,4 +107,15 @@ const Data = styled.div`
 
 const Submit = styled(Link)`
   ${SubmitStyle};
+`;
+
+const Sigout = styled.button`
+  border: none;
+  background-color: none;
+  color: ${colors.white};
+  background-color: transparent;
+  margin: 0 0 1.5rem;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
 `;

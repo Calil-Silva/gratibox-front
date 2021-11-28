@@ -5,7 +5,7 @@ import { UserContext } from "../contexts/UserContext";
 import { useContext, useState, useEffect } from "react";
 import { fadeInUp } from "react-animations";
 import { useNavigate } from "react-router";
-import { getNewPlan, postUserPlan } from "../services/gratibox";
+import { getNewPlan, postUserPlan, signoutUser } from "../services/gratibox";
 import { SubmitStyle, Body, Header } from "../styles/SharedStyles";
 import { colors } from "../styles/theme";
 
@@ -128,6 +128,9 @@ export default function NewPlan() {
       >
         Próximo
       </GotoAdress>
+      <SignOut userAdress={userAdress} onClick={signoutUser}>
+        Sair
+      </SignOut>
       <Submit userAdress={userAdress} onClick={handleSubmit}>
         Finalizar
       </Submit>
@@ -233,7 +236,20 @@ const BacktoPlans = styled.button`
   background-color: transparent;
   margin: 0 0 1.5rem;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 15px;
   animation: 4s ${fadeInAnimation};
   display: ${({ userAdress }) => (userAdress ? "initial" : "none")};
+`;
+
+const SignOut = styled.button`
+  display: ${({ userAdress }) => (userAdress ? "none" : "initial")};
+  animation: 4s ${fadeInAnimation};
+  border: none;
+  background-color: none;
+  color: ${colors.white};
+  background-color: transparent;
+  margin: 0 0 1.5rem;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
 `;

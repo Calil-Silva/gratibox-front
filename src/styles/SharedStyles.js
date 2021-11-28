@@ -32,14 +32,15 @@ export const Header = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 3rem 2rem 1rem;
+  justify-content: center;
+  margin: 3rem 2rem 0;
   h1 {
-    font-size: 28px;
+    font-size: clamp(1rem, 7vmin, 2rem);
     font-weight: bold;
     color: ${colors.white};
   }
   h2 {
-    font-size: 18px;
+    font-size: clamp(0.5rem, 4vmin, 1rem);
     font-weight: 300;
     color: ${colors.white};
     margin-top: 1.5rem;

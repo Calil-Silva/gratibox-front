@@ -25,3 +25,7 @@ export function getNewPlan(token) {
 export function postUserPlan(plan, token) {
   return axios.post(`${URL}/newplan`, plan, setConfig(token));
 }
+
+export function signoutUser(token) {
+  return axios.delete(`${URL}/signout`, setConfig(token));
+}

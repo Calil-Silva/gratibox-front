@@ -8,6 +8,7 @@
     "react-animations": "^1.0.0",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
+    "react-loader-spinner": "^4.0.0",
     "react-router-dom": "^6.0.2",
     "react-scripts": "4.0.3",
     "styled-components": "^5.3.3",
@@ -38,11 +39,11 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^9.0.0",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "supertest": "^6.1.6",
-    "faker": "^5.5.3"
+    "cypress": "^9.0.0",
+    "faker": "^5.5.3",
+    "supertest": "^6.1.6"
   }
 }

@@ -21,7 +21,8 @@ export default function Register() {
     confirmedPassword: "",
   });
 
-  const registerNewUser = () => {
+  const registerNewUser = (e) => {
+    e.preventDefault();
     postNewUser(newUserData)
       .then((res) => {
         alert(res.data.message);
@@ -35,6 +36,7 @@ export default function Register() {
       <Header>
         <h1>Bem vindo ao GratiBox</h1>
       </Header>
+      <Marginer vertical={VERTICAL} />
       <Form>
         <Input
           type="text"
@@ -72,7 +74,11 @@ export default function Register() {
           }
         />
         <Marginer vertical={VERTICAL} />
-        <Submit type="submit" value="Cadastrar" onClick={registerNewUser} />
+        <Submit
+          type="submit"
+          value="Cadastrar"
+          onClick={(e) => registerNewUser(e)}
+        />
         <Links to="/login">Já sou grato</Links>
       </Form>
     </Body>
