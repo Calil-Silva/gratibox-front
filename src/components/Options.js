@@ -3,6 +3,7 @@ import { FiArrowDown, FiArrowUp } from "react-icons/fi";
 import { flipInX, fadeIn } from "react-animations";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
+import { colors } from "../styles/theme";
 
 export default function Options({ userOptions, labels }) {
   const [showContent, setShowContent] = useState(false);
@@ -71,9 +72,9 @@ const Body = styled.div`
   width: 80%;
   height: ${({ showcontent }) => (showcontent ? "7.5rem" : "3rem")};
   margin-bottom: 0.5rem;
-  background-color: #e0d1ed9e;
+  background-color: ${colors.lightLilac};
   border-radius: 5px;
-  color: #4d65a8;
+  color: ${colors.violet};
   font-size: 18px;
   font-weight: bold;
   display: flex;
@@ -134,11 +135,11 @@ const Body = styled.div`
   }
 
   input[type="checkbox"]:hover {
-    background-color: lightgoldenrodyellow;
+    background-color: ${colors.lightgoldenrodyellow};
   }
 
   input[type="checkbox"]:checked {
-    background-color: lightgoldenrodyellow;
+    background-color: ${colors.lightgoldenrodyellow};
   }
 
   input[type="checkbox"]:checked:after {
@@ -150,7 +151,7 @@ const Body = styled.div`
     -webkit-appearance: none;
     height: 18px;
     width: 18px;
-    background-color: #fff;
+    background-color: ${colors.white};
     margin-right: 0.5rem;
     border-radius: 3px;
     cursor: pointer;

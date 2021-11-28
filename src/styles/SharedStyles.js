@@ -1,14 +1,15 @@
 import styled, { css, keyframes } from "styled-components/macro";
 import { fadeInUp } from "react-animations";
 import { Link } from "react-router-dom";
+import { colors } from "./theme";
 
 const fadeInAnimation = keyframes`${fadeInUp}`;
 
 export const SubmitStyle = css`
   height: 2.5rem;
   width: 10rem;
-  color: #fff;
-  background-color: #8c97ea;
+  color: ${colors.white};
+  background-color: ${colors.lightViolet};
   border-radius: 10px;
   border: none;
   font-weight: bold;
@@ -35,12 +36,12 @@ export const Header = styled.div`
   h1 {
     font-size: 28px;
     font-weight: bold;
-    color: #fff;
+    color: ${colors.white};
   }
   h2 {
     font-size: 18px;
     font-weight: 300;
-    color: #fff;
+    color: ${colors.white};
     margin-top: 1.5rem;
   }
 `;
@@ -56,7 +57,7 @@ export const Input = styled.input`
   height: 4rem;
   width: calc(100vw - 4rem);
   border-radius: 10px;
-  border: 1px solid #604848;
+  border: 1px solid ${colors.brown};
   margin-bottom: 0.5rem;
   padding-left: 0.8rem;
   font-size: 24px;
@@ -65,14 +66,14 @@ export const Input = styled.input`
   ::placeholder {
     font-size: 24px;
     font-weight: bold;
-    color: #60484866;
+    color: ${colors.lightGray};
   }
 `;
 
 export const Links = styled(Link)`
   border: none;
   background-color: none;
-  color: #fff;
+  color: ${colors.white};
   background-color: transparent;
   margin: 1rem 0 1.5rem;
   font-weight: bold;
@@ -89,37 +90,4 @@ export const Marginer = styled.div`
   margin-bottom: ${({ vertical }) => vertical || "0"};
   margin-left: ${({ horizontal }) => horizontal || "0"};
   margin-right: ${({ horizontal }) => horizontal || "0"};
-`;
-
-export const Plan = styled.div`
-  margin: 2rem 0 1rem;
-  height: 25rem;
-  width: calc(100vw - 1rem);
-  background-color: #e5cdb3;
-  border-radius: 25px;
-
-  img {
-    object-fit: cover;
-    height: ${({ max }) => max};
-    width: 100%;
-    border-radius: 25px;
-  }
-
-  div {
-    height: 45%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  h3 {
-    color: #4d65a8;
-    font-size: 18px;
-    font-weight: bold;
-    width: calc(100% - 2rem);
-    margin-left: 1.5rem;
-    text-align: left;
-    margin-bottom: 2rem;
-  }
 `;

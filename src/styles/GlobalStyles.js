@@ -34,7 +34,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
     background-color: #6d7ce4;
-    font-family: 'Roboto', sans-serif;        
+    font-family: 'Roboto', sans-serif;
 }
     }
     button {

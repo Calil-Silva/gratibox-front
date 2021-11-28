@@ -7,6 +7,7 @@ import { fadeInUp } from "react-animations";
 import { useNavigate } from "react-router";
 import { getNewPlan, postUserPlan } from "../services/gratibox";
 import { SubmitStyle, Body, Header } from "../styles/SharedStyles";
+import { colors } from "../styles/theme";
 
 export default function NewPlan() {
   const { choosedPlan, setChoosedPlan, userData } = useContext(UserContext);
@@ -145,7 +146,7 @@ const fadeInAnimation = keyframes`${fadeInUp}`;
 const Plan = styled.div`
   margin: 2rem 0 1rem;
   width: calc(100vw - 1rem);
-  background-color: #fff;
+  background-color: ${colors.white};
   border-radius: 25px;
   user-select: none;
   animation: 1s ${fadeInAnimation};
@@ -162,7 +163,7 @@ const Plan = styled.div`
 const Adress = styled.div`
   margin: 1.5rem 0 1rem;
   width: calc(100vw - 1rem);
-  background-color: #fff;
+  background-color: ${colors.white};
   border-radius: 25px;
   user-select: none;
   animation: 0.5s ${fadeInAnimation};
@@ -198,9 +199,9 @@ const InputAdress = styled.input`
   width: 80%;
   height: 3rem;
   margin-bottom: 0.5rem;
-  background-color: #e0d1ed9e;
+  background-color: ${colors.lightLilac};
   border-radius: 5px;
-  color: #4d65a8;
+  color: ${colors.violet};
   font-size: 18px;
   font-weight: bold;
   display: flex;
@@ -212,7 +213,7 @@ const InputAdress = styled.input`
   padding-left: 1rem;
 
   ::placeholder {
-    color: #4d65a8;
+    color: ${colors.violet};
   }
 `;
 
@@ -228,7 +229,7 @@ const Submit = styled.button`
 
 const BacktoPlans = styled.button`
   background-color: none;
-  color: #fff;
+  color: ${colors.white};
   background-color: transparent;
   margin: 0 0 1.5rem;
   font-weight: bold;

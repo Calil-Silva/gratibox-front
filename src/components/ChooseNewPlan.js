@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import { useContext } from "react";
 import { Body, Header, Submit } from "../styles/SharedStyles";
+import { colors } from "../styles/theme";
 
 export default function ChooseNewPlan() {
   const { userData, setChoosedPlan, choosedPlan } = useContext(UserContext);
@@ -62,7 +63,7 @@ const Plan = styled.div`
   margin: 2rem 0 1rem;
   height: 25rem;
   width: calc(100vw - 1rem);
-  background-color: #e5cdb3;
+  background-color: ${colors.moodBeige};
   border-radius: 25px;
 
   img {
@@ -81,7 +82,7 @@ const Plan = styled.div`
   }
 
   h3 {
-    color: #4d65a8;
+    color: ${colors.violet};
     font-size: 18px;
     font-weight: bold;
     width: calc(100% - 2rem);
