@@ -12,7 +12,7 @@ export const SubmitStyle = css`
   border-radius: 10px;
   border: none;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,7 +21,6 @@ export const SubmitStyle = css`
 `;
 
 export const Body = styled.div`
-  height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -32,11 +31,17 @@ export const Header = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 7rem 2rem 1rem;
+  margin: 3rem 2rem 1rem;
   h1 {
     font-size: 28px;
     font-weight: bold;
     color: #fff;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 300;
+    color: #fff;
+    margin-top: 1.5rem;
   }
 `;
 
@@ -71,7 +76,7 @@ export const Links = styled(Link)`
   background-color: transparent;
   margin: 1rem 0 1.5rem;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 15px;
   cursor: pointer;
 `;
 
@@ -84,4 +89,37 @@ export const Marginer = styled.div`
   margin-bottom: ${({ vertical }) => vertical || "0"};
   margin-left: ${({ horizontal }) => horizontal || "0"};
   margin-right: ${({ horizontal }) => horizontal || "0"};
+`;
+
+export const Plan = styled.div`
+  margin: 2rem 0 1rem;
+  height: 25rem;
+  width: calc(100vw - 1rem);
+  background-color: #e5cdb3;
+  border-radius: 25px;
+
+  img {
+    object-fit: cover;
+    height: ${({ max }) => max};
+    width: 100%;
+    border-radius: 25px;
+  }
+
+  div {
+    height: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h3 {
+    color: #4d65a8;
+    font-size: 18px;
+    font-weight: bold;
+    width: calc(100% - 2rem);
+    margin-left: 1.5rem;
+    text-align: left;
+    margin-bottom: 2rem;
+  }
 `;
