@@ -14,6 +14,7 @@ import {
 } from "../styles/SharedStyles";
 
 export default function Login() {
+  const VERTICAL = "3rem";
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -54,7 +55,7 @@ export default function Login() {
             setCredentials({ ...credentials, password: e.target.value })
           }
         />
-        <Marginer vertical="3rem" />
+        <Marginer vertical={VERTICAL} />
         <Submit
           type="submit"
           value="Login"

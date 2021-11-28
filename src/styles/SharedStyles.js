@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const fadeInAnimation = keyframes`${fadeInUp}`;
 
-export const submitStyle = css`
+export const SubmitStyle = css`
   height: 2.5rem;
   width: 10rem;
   color: #fff;
@@ -69,14 +69,14 @@ export const Links = styled(Link)`
   background-color: none;
   color: #fff;
   background-color: transparent;
-  margin-bottom: 1.5rem;
+  margin: 1rem 0 1.5rem;
   font-weight: bold;
   font-size: 12px;
   cursor: pointer;
 `;
 
 export const Submit = styled.input`
-  ${submitStyle}
+  ${SubmitStyle}
 `;
 
 export const Marginer = styled.div`
