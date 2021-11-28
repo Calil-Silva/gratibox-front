@@ -6,7 +6,7 @@ import { useContext, useState, useEffect } from "react";
 import { fadeInUp } from "react-animations";
 import { useNavigate } from "react-router";
 import { getNewPlan, postUserPlan } from "../services/gratibox";
-import { SubmitStyle } from "../styles/SharedStyles";
+import { SubmitStyle, Body, Header } from "../styles/SharedStyles";
 
 export default function NewPlan() {
   const { choosedPlan, setChoosedPlan, userData } = useContext(UserContext);
@@ -141,31 +141,6 @@ export default function NewPlan() {
 }
 
 const fadeInAnimation = keyframes`${fadeInUp}`;
-
-const Body = styled.div`
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const Header = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2rem 1rem 1rem;
-  h1 {
-    font-size: 26px;
-    font-weight: bold;
-    color: #fff;
-  }
-  h2 {
-    font-size: 18px;
-    font-weight: 300;
-    color: #fff;
-    margin-top: 1.5rem;
-  }
-`;
 
 const Plan = styled.div`
   margin: 2rem 0 1rem;
