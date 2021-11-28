@@ -6,6 +6,7 @@ import { useContext, useState, useEffect } from "react";
 import { fadeInUp } from "react-animations";
 import { useNavigate } from "react-router";
 import { getNewPlan, postUserPlan } from "../services/gratibox";
+import { submitStyle } from "../styles/sharedStyles";
 
 export default function NewPlan() {
   const { choosedPlan, setChoosedPlan, userData } = useContext(UserContext);
@@ -241,36 +242,12 @@ const InputAdress = styled.input`
 `;
 
 const GotoAdress = styled.button`
-  height: 2.5rem;
-  width: 10rem;
-  color: #fff;
-  background-color: #8c97ea;
-  border-radius: 10px;
-  border: none;
-  font-weight: bold;
-  font-size: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1rem;
-  animation: 4s ${fadeInAnimation};
+  ${submitStyle};
   display: ${({ userAdress }) => (userAdress ? "none" : "initial")};
 `;
 
 const Submit = styled.button`
-  height: 2.5rem;
-  width: 10rem;
-  color: #fff;
-  background-color: #8c97ea;
-  border-radius: 10px;
-  border: none;
-  font-weight: bold;
-  font-size: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1rem;
-  animation: 4s ${fadeInAnimation};
+  ${submitStyle};
   display: ${({ userAdress }) => (userAdress ? "initial" : "none")};
 `;
 

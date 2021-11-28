@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { postNewUser } from "../services/gratibox";
+import { submitStyle } from "../styles/sharedStyles";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -113,16 +114,5 @@ const Form = styled.div`
 `;
 
 const Submit = styled.button`
-  height: 3.5rem;
-  width: 14rem;
-  color: #fff;
-  background-color: #8c97ea;
-  border-radius: 10px;
-  border: none;
-  font-weight: bold;
-  font-size: 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 3.5rem;
+  ${submitStyle}
 `;
