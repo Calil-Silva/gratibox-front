@@ -1,21 +1,82 @@
-# Getting Started
+## About the project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was built with React.js using Creat React App. It is a ``mystery box service delivery``, where user, based on his choices, will receive monthly or weekly, different kind of mindfullness products.
 
-## Available Scripts
+### Motivation
 
-In the project directory, you will first need to run `npm i` to install all the dependencies and then you can run:
+I was motivated to create this project by the lack of mystery box related with mindfullness in Brazil and to meet increasing customer demand about mindfullness products in our country.
 
-### `npm start`
+### Usage
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+As a user, you can create an account at ``Sign Up`` page and login into the platform at ``Sign In`` page. Then, at ``user`` page, user will see a description of each ``plan``. By clicking on ``Assinar``, user will be redirected to new plan ``subscription``, where he will choose the ``plan``, ``delivery date``, ``products categories`` and finally, his delivery address.
+After that, finishing his ``subscription``, user will be redirect to ``user`` page again, but instead of plan descriptions, he will see his ``deliveries information``.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Products categories**
+  - Chás
+  - Incensos
+  - Produtos orgânicos
 
-**Note that you will need the back-end, available in: https://github.com/Calil-Silva/gratibox-back
+- **Delivery dates**
+  - *Monthly*
+    - Day 1
+    - Day 10
+    - Day 20
+  - *Weekly*
+    - Monday
+    - Wednesday
+    - Friday
+ 
+ Below you can see a demonstration of how it works and a link to access the application in real time.
 
-## Deployed on Vercel
+<div align="center">
+  <img  src="https://user-images.githubusercontent.com/87549965/143924164-13db0f7c-392a-4749-998c-a36ba3ce6337.gif" />
+  
+https://gratibox-front-phi.vercel.app/user
+</div>
 
-If you want to see the app running without the need of GratiBox API, you can access https://gratibox-front-phi.vercel.app/, since GratiBox API is deployed in Heroku and front-end in Vercel, is pointing to Heroku.
+## Technologies
+
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+<img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white" />
+<img src="https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white" />
+
+## Getting Started
+
+To get a local copy up and running follow these simple steps.
+
+1. Clone the front-end repo
+
+```
+https://github.com/Calil-Silva/gratibox-front.git
+```
+
+2. Install NPM packages for the front-end repo
+
+```
+npm install
+```
+
+3. Clone the back-end repo and run the command:
+
+```
+npm start
+```
+
+4. Run ``npm start`` on front-end repo as well
+
+
+
+****You can find more details about the back-end repo here: https://github.com/Calil-Silva/gratibox-back#readme****
+
+
+### Scripts
+
+In this project, how it was created with Create-React-App, you can use ``npm start`` to run the application on server (http://localhost:3000).
+
+```
+npm start
+```
+
+## Developers
+
+- Calil Silva
