@@ -1,12 +1,19 @@
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components/macro";
 import week from "../assets/images/weekplan.jpg";
 import month from "../assets/images/monthplan.jpg";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
+import { Body, Header, Submit } from "../styles/SharedStyles";
+import { colors } from "../styles/theme";
+import { fadeInUp, fadeInRight } from "react-animations";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 
 export default function ChooseNewPlan() {
   const { userData, setChoosedPlan, choosedPlan } = useContext(UserContext);
+  const [showMonthlyPlan, setShowMonthlyPlan] = useState(false);
+  const [afterLoading, setAfterLoading] = useState(false);
   const name = userData?.name?.split(" ")[0];
   const navigate = useNavigate();
 
@@ -17,75 +24,77 @@ export default function ChooseNewPlan() {
     navigate("/newplan", { replace: true });
   };
 
+  useEffect(() => {
+    const changeShowedPLan = setInterval(() => {
+      setShowMonthlyPlan(!showMonthlyPlan);
+      setAfterLoading(true);
+    }, 5000);
+
+    return () => {
+      clearInterval(changeShowedPLan);
+    };
+  }, [showMonthlyPlan]);
+
   return (
     <Body>
       <Header>
         <h1>Bom te ver por aqui, {name}.</h1>
         <h2>Você ainda não assinou um plano, que tal começar agora?</h2>
       </Header>
-      <Plan>
+      <Loader type="Hearts" color={colors.pink} height={80} width={80} />
+
+      <MonthlyPlan
+        showMonthlyPlan={showMonthlyPlan}
+        afterLoading={afterLoading}
+      >
         <img src={week} alt="weekly plan" />
         <div>
           <h3>
-            Você recebe um box por semana. Ideal para quem quer exercer a
-            gratidão todos os dias.
+            Você recebe um box por mês. Ideal para quem quer exercer a gratidão
+            todos os dias.
           </h3>
-          <Submit id="Mensal" onClick={(e) => handlePlan(e)}>
-            Assinar
-          </Submit>
+          <Submit
+            type="submit"
+            value="Assinar"
+            id="Mensal"
+            onClick={(e) => handlePlan(e)}
+          />
         </div>
-      </Plan>
-      <Plan>
+      </MonthlyPlan>
+      <WeeklyPlan showMonthlyPlan={showMonthlyPlan} afterLoading={afterLoading}>
         <img src={month} alt="weekly plan" />
         <div>
           <h3>
             Você recebe um box por semana. Ideal para quem quer exercer a
             gratidão todos os dias.
           </h3>
-          <Submit id="Semanal" onClick={(e) => handlePlan(e)}>
-            Assinar
-          </Submit>
+          <Submit
+            type="submit"
+            value="assinar"
+            id="Semanal"
+            onClick={(e) => handlePlan(e)}
+          />
         </div>
-      </Plan>
+      </WeeklyPlan>
     </Body>
   );
 }
 
-const Body = styled.div`
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+const fadeInAnimation = keyframes`${fadeInUp}`;
+const changePlanAnimation = keyframes`${fadeInRight}`;
+const loadingAnimation = css`
+  animation: 1s ${fadeInAnimation};
+`;
+const afterLoadingAnimation = css`
+  animation: 1s ${changePlanAnimation};
 `;
 
-const Header = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 5rem 1rem 1rem;
-  h1 {
-    font-size: 26px;
-    font-weight: bold;
-    color: #fff;
-  }
-  h2 {
-    font-size: 18px;
-    font-weight: 300;
-    color: #fff;
-    margin-top: 1.5rem;
-  }
-`;
-
-const Plan = styled.div`
-  margin: 2rem 0 0;
+const Plan = css`
+  margin: 0.5rem 0 1rem;
   height: 25rem;
   width: calc(100vw - 1rem);
-  background-color: #e5cdb3;
+  background-color: ${colors.moodBeige};
   border-radius: 25px;
-
-  &:last-child {
-    margin-bottom: 3rem;
-  }
 
   img {
     object-fit: cover;
@@ -103,26 +112,26 @@ const Plan = styled.div`
   }
 
   h3 {
-    color: #4d65a8;
+    color: ${colors.violet};
     font-size: 18px;
     font-weight: bold;
     width: calc(100% - 2rem);
     margin-left: 1.5rem;
     text-align: left;
+    margin-bottom: 2rem;
   }
 `;
 
-const Submit = styled.button`
-  height: 2.5rem;
-  width: 10rem;
-  color: #fff;
-  background-color: #8c97ea;
-  border-radius: 10px;
-  border: none;
-  font-weight: bold;
-  font-size: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
+const MonthlyPlan = styled.div`
+  ${Plan}
+  ${({ afterLoading }) =>
+    afterLoading ? afterLoadingAnimation : loadingAnimation};
+  display: ${({ showMonthlyPlan }) => (showMonthlyPlan ? "initial" : "none")};
+`;
+
+const WeeklyPlan = styled.div`
+  ${Plan}
+  ${({ afterLoading }) =>
+    afterLoading ? afterLoadingAnimation : loadingAnimation};
+  display: ${({ showMonthlyPlan }) => (showMonthlyPlan ? "none" : "initial")};
 `;

@@ -2,6 +2,7 @@ import { Link, Navigate } from "react-router-dom";
 import styled from "styled-components";
 import homeContentBackGround from "../assets/images/homePage.webp";
 import { getUserData } from "../services/loginPersistence";
+import { colors } from "../styles/theme";
 
 export default function Home() {
   const isLogged = getUserData();
@@ -44,12 +45,12 @@ const Header = styled.div`
   h1 {
     font-size: 28px;
     font-weight: bold;
-    color: #fff;
+    color: ${colors.white};
   }
   h2 {
     font-size: 18px;
     font-weight: 300;
-    color: #fff;
+    color: ${colors.white};
     margin-top: 3rem;
     text-align: center;
   }
@@ -66,14 +67,14 @@ const Content = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  background-color: #4d65a8;
+  background-color: ${colors.violet};
 `;
 
 const Links = styled(Link)`
   height: 3rem;
   width: 14rem;
-  color: #fff;
-  background-color: #8c97ea;
+  color: ${colors.white};
+  background-color: ${colors.lightViolet};
   border-radius: 10px;
   border: none;
   font-weight: bold;
@@ -85,7 +86,7 @@ const Links = styled(Link)`
   &:last-of-type {
     border: none;
     background-color: none;
-    color: #fff;
+    color: ${colors.white};
     background-color: transparent;
     margin: 0.5rem 0 1.5rem;
     font-weight: bold;

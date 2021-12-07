@@ -5,7 +5,9 @@ import { UserContext } from "../contexts/UserContext";
 import { useContext, useState, useEffect } from "react";
 import { fadeInUp } from "react-animations";
 import { useNavigate } from "react-router";
-import { getNewPlan, postUserPlan } from "../services/gratibox";
+import { getNewPlan, postUserPlan, signoutUser } from "../services/gratibox";
+import { SubmitStyle, Body, Header } from "../styles/SharedStyles";
+import { colors } from "../styles/theme";
 
 export default function NewPlan() {
   const { choosedPlan, setChoosedPlan, userData } = useContext(UserContext);
@@ -126,6 +128,9 @@ export default function NewPlan() {
       >
         Próximo
       </GotoAdress>
+      <SignOut userAdress={userAdress} onClick={signoutUser}>
+        Sair
+      </SignOut>
       <Submit userAdress={userAdress} onClick={handleSubmit}>
         Finalizar
       </Submit>
@@ -141,35 +146,10 @@ export default function NewPlan() {
 
 const fadeInAnimation = keyframes`${fadeInUp}`;
 
-const Body = styled.div`
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const Header = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2rem 1rem 1rem;
-  h1 {
-    font-size: 26px;
-    font-weight: bold;
-    color: #fff;
-  }
-  h2 {
-    font-size: 18px;
-    font-weight: 300;
-    color: #fff;
-    margin-top: 1.5rem;
-  }
-`;
-
 const Plan = styled.div`
-  margin: 1.5rem 0 1rem;
+  margin: 2rem 0 1rem;
   width: calc(100vw - 1rem);
-  background-color: #fff;
+  background-color: ${colors.white};
   border-radius: 25px;
   user-select: none;
   animation: 1s ${fadeInAnimation};
@@ -186,7 +166,7 @@ const Plan = styled.div`
 const Adress = styled.div`
   margin: 1.5rem 0 1rem;
   width: calc(100vw - 1rem);
-  background-color: #fff;
+  background-color: ${colors.white};
   border-radius: 25px;
   user-select: none;
   animation: 0.5s ${fadeInAnimation};
@@ -222,9 +202,9 @@ const InputAdress = styled.input`
   width: 80%;
   height: 3rem;
   margin-bottom: 0.5rem;
-  background-color: #e0d1ed9e;
+  background-color: ${colors.lightLilac};
   border-radius: 5px;
-  color: #4d65a8;
+  color: ${colors.violet};
   font-size: 18px;
   font-weight: bold;
   display: flex;
@@ -236,51 +216,40 @@ const InputAdress = styled.input`
   padding-left: 1rem;
 
   ::placeholder {
-    color: #4d65a8;
+    color: ${colors.violet};
   }
 `;
 
 const GotoAdress = styled.button`
-  height: 2.5rem;
-  width: 10rem;
-  color: #fff;
-  background-color: #8c97ea;
-  border-radius: 10px;
-  border: none;
-  font-weight: bold;
-  font-size: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1rem;
-  animation: 4s ${fadeInAnimation};
+  ${SubmitStyle};
   display: ${({ userAdress }) => (userAdress ? "none" : "initial")};
 `;
 
 const Submit = styled.button`
-  height: 2.5rem;
-  width: 10rem;
-  color: #fff;
-  background-color: #8c97ea;
-  border-radius: 10px;
-  border: none;
-  font-weight: bold;
-  font-size: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1rem;
-  animation: 4s ${fadeInAnimation};
+  ${SubmitStyle};
   display: ${({ userAdress }) => (userAdress ? "initial" : "none")};
 `;
 
 const BacktoPlans = styled.button`
   background-color: none;
-  color: #fff;
+  color: ${colors.white};
   background-color: transparent;
   margin: 0 0 1.5rem;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 15px;
   animation: 4s ${fadeInAnimation};
   display: ${({ userAdress }) => (userAdress ? "initial" : "none")};
+`;
+
+const SignOut = styled.button`
+  display: ${({ userAdress }) => (userAdress ? "none" : "initial")};
+  animation: 4s ${fadeInAnimation};
+  border: none;
+  background-color: none;
+  color: ${colors.white};
+  background-color: transparent;
+  margin: 0 0 1.5rem;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
 `;
